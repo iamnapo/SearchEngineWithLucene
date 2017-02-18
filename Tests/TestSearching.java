@@ -15,7 +15,7 @@ public class TestSearching {
         int found = 0;
         try {
             found = tokenSearcher.searchIndex(indexDir,"name",100);
-        }catch ( Exception e) {}
+        }catch ( Exception ignored) {}
         int expected = 3;
         Assert.check(found == expected,"Found " + found + " while expected " + expected);
     }
@@ -27,7 +27,7 @@ public class TestSearching {
         int found = 0;
         try {
             found = tokenSearcher.searchIndex(indexDir,"names",100);
-        }catch ( Exception e) {}
+        }catch ( Exception ignored) {}
         int expected = 3;
         Assert.check(found == expected,"Found " + found + " while expected " + expected);
     }
@@ -39,7 +39,7 @@ public class TestSearching {
         int found = 0;
         try {
             found = tokenSearcher.searchIndex(indexDir,"napoleon",100);
-        }catch ( Exception e) {}
+        }catch ( Exception ignored) {}
         int expected = 1;
         Assert.check(found == expected,"Found " + found + " while expected " + expected);
     }
@@ -51,7 +51,7 @@ public class TestSearching {
         int found = 0;
         try {
             found = tokenSearcher.searchIndex(indexDir,"nonExist",100);
-        }catch ( Exception e) {}
+        }catch ( Exception ignored) {}
         int expected = 0;
         Assert.check(found == expected,"Found " + found + " while expected " + expected);
     }

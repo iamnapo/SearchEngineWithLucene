@@ -1,6 +1,8 @@
 package searchEngineWithLucene;//Napoleon Oikonomou
 
 import javax.swing.*;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
 import java.io.File;
 import java.util.ArrayList;
 
@@ -9,10 +11,11 @@ public class GUIForIndexingAndSearching {
     static ArrayList<String> consoleMessages = new ArrayList<>();
 
     public static void main(String[] args) {
-        JFrame frame = new JFrame("GUIForIndexingAndSearching");
+        JFrame frame = new JFrame("Napo Rocks!");
         frame.setContentPane(new GUIForIndexingAndSearching().rootPanel);
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         frame.pack();
+        frame.setLocationRelativeTo(null);
         frame.setVisible(true);
     }
 
@@ -51,6 +54,8 @@ public class GUIForIndexingAndSearching {
             consoleMessages.clear();
         });
 
+
+
         DataFolderPath.addActionListener(e -> {
             JFileChooser chooser = new JFileChooser();
             chooser.setCurrentDirectory(new File("."));
@@ -63,6 +68,20 @@ public class GUIForIndexingAndSearching {
             File folder = chooser.getCurrentDirectory();
             path[0] = folder.getAbsolutePath();
             OutputArea.append("Path Specified!\n");
+        });
+        TokenInput.addFocusListener(new FocusAdapter() {
+            @Override
+            public void focusGained(FocusEvent e) {
+                super.focusGained(e);
+                TokenInput.setText("");
+            }
+        });
+        TokenInput.addFocusListener(new FocusAdapter() {
+            @Override
+            public void focusLost(FocusEvent e) {
+                super.focusLost(e);
+                TokenInput.setText("Search...");
+            }
         });
     }
 }
